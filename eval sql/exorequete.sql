@@ -1,0 +1,10 @@
+-- SELECT ContactName,CompanyName,ContactTitle,Phone FROM customers  WHERE Country = 'France';
+-- SELECT ProductName,UnitPrice FROM products JOIN suppliers ON products.SupplierID = suppliers.SupplierID WHERE products.SupplierID = 1;
+-- SELECT COUNT(DISTINCT products.productID) AS 'nb produits' , CompanyName FROM suppliers JOIN products ON products.SupplierID = suppliers.SupplierID WHERE country ='France'GROUP BY CompanyName ORDER BY COUNT(DISTINCT products.productID) DESC ;
+-- SELECT customers.CompanyName AS 'Client', COUNT(OrderID) AS 'Nbre commandes' FROM customers NATURAL JOIN orders NATURAL JOIN `order details` AS od WHERE customers.Country = 'France' GROUP BY customers.CompanyName HAVING COUNT(od.OrderID) > 10;
+-- SELECT CompanyName AS 'Client', SUM(UnitPrice*Quantity) AS CA ,country AS pays FROM `order details` AS od JOIN orders ON orders.OrderID = od.OrderID JOIN customers ON orders.CustomerID = customers.CustomerID GROUP BY CompanyName HAVING SUM(UnitPrice*Quantity)>30000 ORDER BY SUM(UnitPrice*Quantity) DESC;
+-- SELECT customers.Country AS 'pays'FROM customers JOIN orders ON orders.CustomerID = customers.CustomerID JOIN `order details` AS od ON orders.OrderID = od.OrderID JOIN products ON products.ProductID = od.ProductID JOIN suppliers ON products.SupplierID = suppliers.SupplierID WHERE suppliers.CompanyName = 'Exotic Liquids' GROUP BY customers.Country;
+-- SELECT  SUM(UnitPrice*Quantity) AS 'montant des ventes'FROM `order details` AS od JOIN orders ON od.OrderID = orders.OrderID WHERE YEAR(OrderDate) LIKE '1997';
+-- SELECT  SUM(UnitPrice*Quantity) AS 'montant des ventes', MONTH(OrderDate) FROM `order details` AS od JOIN orders ON od.OrderID = orders.OrderID WHERE YEAR(OrderDate) LIKE '1997' GROUP BY MONTH(OrderDate) ;
+-- SELECT MAX(OrderDate) FROM orders JOIN customers ON customers.CustomerID = orders.customerID
+-- SELECT ROUND(AVG(DATEDIFF(ShippedDate,OrderDate))) FROM orders;
